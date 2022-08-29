@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT name="MotasEditPlugin" projectType="audioplug" jucerVersion="5.4.5"
+              pluginProducesMidiOut="1" pluginWantsMidiIn="1" pluginManufacturer="Motas Electronics Limited"
+              bundleIdentifier="com.motaselectronics.motaseditplugin" companyWebsite="www.motas-synth.uk"
+              companyEmail="info@motas-synth.uk" companyName="Motas Electronics Limited"
+              pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn,pluginProducesMidiOut"
+              pluginIsSynth="1" pluginIsMidiEffectPlugin="0" pluginEditorRequiresKeys="0"
+              pluginRTASDisableBypass="0" pluginRTASDisableMultiMono="0" pluginAAXDisableBypass="0"
+              pluginAAXDisableMultiMono="0" id="BsQUx6" pluginVSTCategory="kPlugCategSynth"
+              version="1.0.12" pluginDesc="Editor for the Motas-6 synthesizer"
+              aaxIdentifier="com.motaselectronics.motaseditplugin" pluginManufacturerCode="MELL"
+              pluginCode="M6SE" pluginFormats="buildAU,buildVST" pluginVST3Category="Instrument,Synth">
+  <MAINGROUP id="MEtRcu" name="MotasEditPlugin">
+    <GROUP id="{BA743146-5419-8D92-3D12-02368F1D0C2C}" name="Source">
+      <FILE id="LyV6LA" name="advancedMod.cpp" compile="1" resource="0" file="../../Source/advancedMod.cpp"/>
+      <FILE id="I8g1Hq" name="advancedMod.h" compile="0" resource="0" file="../../Source/Headers/advancedMod.h"/>
+      <FILE id="Hzsv89" name="ApplicationCommon.cpp" compile="1" resource="0"
+            file="../../Source/ApplicationCommon.cpp"/>
+      <FILE id="cTqBM4" name="ApplicationCommon.h" compile="0" resource="0"
+            file="../../Source/Headers/ApplicationCommon.h"/>
+      <FILE id="WZaFzA" name="crc.cpp" compile="1" resource="0" file="../../Source/crc.cpp"/>
+      <FILE id="HLmced" name="crc.h" compile="0" resource="0" file="../../Source/Headers/crc.h"/>
+      <FILE id="qk7pL4" name="CustomListBox.cpp" compile="1" resource="0"
+            file="../../Source/CustomListBox.cpp"/>
+      <FILE id="JI3V8s" name="CustomListBox.h" compile="0" resource="0" file="../../Source/Headers/CustomListBox.h"/>
+      <FILE id="rLEx5R" name="CustomLook.cpp" compile="1" resource="0" file="../../Source/CustomLook.cpp"/>
+      <FILE id="q0uYrc" name="CustomLook.h" compile="0" resource="0" file="../../Source/Headers/CustomLook.h"/>
+      <FILE id="x6Deed" name="CustomSlider.cpp" compile="1" resource="0"
+            file="../../Source/CustomSlider.cpp"/>
+      <FILE id="O6wYYa" name="CustomSlider.h" compile="0" resource="0" file="../../Source/Headers/CustomSlider.h"/>
+      <FILE id="lKHaun" name="FifoMidi.cpp" compile="1" resource="0" file="../../Source/FifoMidi.cpp"/>
+      <FILE id="DzlR86" name="FifoMidi.h" compile="0" resource="0" file="../../Source/Headers/FifoMidi.h"/>
+      <FILE id="HNcMAw" name="Firmware.cpp" compile="1" resource="0" file="../../Source/Firmware.cpp"/>
+      <FILE id="FSaTNe" name="Firmware.h" compile="0" resource="0" file="../../Source/Headers/Firmware.h"/>
+      <FILE id="q6GsGB" name="HoldingWindowComponent.cpp" compile="1" resource="0"
+            file="../../Source/HoldingWindowComponent.cpp"/>
+      <FILE id="uw08Da" name="HoldingWindowComponent.h" compile="0" resource="0"
+            file="../../Source/Headers/HoldingWindowComponent.h"/>
+      <FILE id="yxmFMi" name="images.h" compile="0" resource="0" file="../../Source/Headers/images.h"/>
+      <FILE id="lcMlFB" name="MainComponent.cpp" compile="1" resource="0"
+            file="../../Source/MainComponent.cpp"/>
+      <FILE id="hs0ODn" name="MainComponent.h" compile="0" resource="0" file="../../Source/Headers/MainComponent.h"/>
+      <FILE id="RB2G0N" name="MIDIComms.cpp" compile="1" resource="0" file="../../Source/MIDIComms.cpp"/>
+      <FILE id="bi346T" name="MIDIComms.h" compile="0" resource="0" file="../../Source/Headers/MIDIComms.h"/>
+      <FILE id="UCvAlw" name="MIDIConnection.cpp" compile="1" resource="0"
+            file="../../Source/MIDIConnection.cpp"/>
+      <FILE id="dHbMum" name="MIDIConnection.h" compile="0" resource="0"
+            file="../../Source/Headers/MIDIConnection.h"/>
+      <FILE id="GHvzCK" name="MIDIDeviceListBox.cpp" compile="1" resource="0"
+            file="../../Source/MIDIDeviceListBox.cpp"/>
+      <FILE id="tAzOgW" name="MIDIDeviceListBox.h" compile="0" resource="0"
+            file="../../Source/Headers/MIDIDeviceListBox.h"/>
+      <FILE id="pJ2Kdu" name="MIDIProcessor.cpp" compile="1" resource="0"
+            file="../../Source/MIDIProcessor.cpp"/>
+      <FILE id="a6Rwlb" name="MIDIProcessor.h" compile="0" resource="0" file="../../Source/Headers/MIDIProcessor.h"/>
+      <FILE id="Ew6zGt" name="MIDITransceiver.cpp" compile="1" resource="0"
+            file="../../Source/MIDITransceiver.cpp"/>
+      <FILE id="cE6VV9" name="MIDITransceiver.h" compile="0" resource="0"
+            file="../../Source/Headers/MIDITransceiver.h"/>
+      <FILE id="JBtEnt" name="ModulationButton.cpp" compile="1" resource="0"
+            file="../../Source/ModulationButton.cpp"/>
+      <FILE id="RoO6N0" name="ModulationButton.h" compile="0" resource="0"
+            file="../../Source/Headers/ModulationButton.h"/>
+      <FILE id="AJaiuP" name="MotasEditResources.cpp" compile="1" resource="0"
+            file="../../binaryResources/MotasEditResources.cpp"/>
+      <FILE id="oBzJNz" name="MotasEditResources.h" compile="0" resource="0"
+            file="../../binaryResources/MotasEditResources.h"/>
+      <FILE id="GCNbJ3" name="MotasPluginParameter.cpp" compile="1" resource="0"
+            file="../../Source/MotasPluginParameter.cpp"/>
+      <FILE id="DHAlRK" name="MotasPluginParameter.h" compile="0" resource="0"
+            file="../../Source/Headers/MotasPluginParameter.h"/>
+      <FILE id="O9w8D3" name="pageParams.cpp" compile="1" resource="0" file="../../Source/pageParams.cpp"/>
+      <FILE id="NJN0u2" name="pageParams.h" compile="0" resource="0" file="../../Source/Headers/pageParams.h"/>
+      <FILE id="MEoOFm" name="PanelControl.cpp" compile="1" resource="0"
+            file="../../Source/PanelControl.cpp"/>
+      <FILE id="IYBmyK" name="PanelControl.h" compile="0" resource="0" file="../../Source/Headers/PanelControl.h"/>
+      <FILE id="MRqBjL" name="PanelGraphic.cpp" compile="1" resource="0"
+            file="../../Source/PanelGraphic.cpp"/>
+      <FILE id="EWflXr" name="PanelGraphic.h" compile="0" resource="0" file="../../Source/Headers/PanelGraphic.h"/>
+      <FILE id="Wbtnhj" name="ParameterData.cpp" compile="1" resource="0"
+            file="../../Source/ParameterData.cpp"/>
+      <FILE id="RZpe7N" name="ParameterData.h" compile="0" resource="0" file="../../Source/Headers/ParameterData.h"/>
+      <FILE id="X8vOXb" name="PatchPatternSequence.cpp" compile="1" resource="0"
+            file="../../Source/PatchPatternSequence.cpp"/>
+      <FILE id="Xxl22S" name="PatchPatternSequence.h" compile="0" resource="0"
+            file="../../Source/Headers/PatchPatternSequence.h"/>
+      <FILE id="zSwl4c" name="PatchSetup.h" compile="0" resource="0" file="../../Source/Headers/PatchSetup.h"/>
+      <FILE id="pWhy4e" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="../../Source/PluginProcessor.cpp"/>
+      <FILE id="RXC1Tm" name="PluginProcessor.h" compile="0" resource="0"
+            file="../../Source/Headers/PluginProcessor.h"/>
+      <FILE id="fHH9mj" name="utilities.cpp" compile="1" resource="0" file="../../Source/utilities.cpp"/>
+      <FILE id="rKBVjG" name="utilities.h" compile="0" resource="0" file="../../Source/Headers/utilities.h"/>
+    </GROUP>
+    <FILE id="GEQmQr" name="CustomTabbedComponent.cpp" compile="1" resource="0"
+          file="../../Source/CustomTabbedComponent.cpp"/>
+    <FILE id="fk7iuJ" name="CustomTabbedComponent.h" compile="0" resource="0"
+          file="../../Source/Headers/CustomTabbedComponent.h"/>
+    <FILE id="l6INlY" name="PatchSetup.cpp" compile="1" resource="0" file="../../Source/PatchSetup.cpp"/>
+  </MAINGROUP>
+  <EXPORTFORMATS>
+    <VS2017 targetFolder="Builds/VisualStudio2017">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="0" name="Release" winArchitecture="x64" useRuntimeLibDLL="0"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path=""/>
+        <MODULEPATH id="juce_events" path=""/>
+        <MODULEPATH id="juce_graphics" path=""/>
+        <MODULEPATH id="juce_data_structures" path=""/>
+        <MODULEPATH id="juce_gui_basics" path=""/>
+        <MODULEPATH id="juce_gui_extra" path=""/>
+        <MODULEPATH id="juce_audio_basics" path=""/>
+        <MODULEPATH id="juce_audio_devices" path=""/>
+        <MODULEPATH id="juce_audio_formats" path=""/>
+        <MODULEPATH id="juce_audio_processors" path=""/>
+        <MODULEPATH id="juce_audio_plugin_client" path=""/>
+        <MODULEPATH id="juce_audio_utils" path=""/>
+      </MODULEPATHS>
+    </VS2017>
+    <LINUX_MAKE targetFolder="Builds/LinuxMakefile" extraCompilerFlags="-Wall">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" isDebug="1" recommendedWarnings="GCC-7"/>
+        <CONFIGURATION name="Release" recommendedWarnings="GCC-7" libraryPath="/usr/X11R6/lib/"
+                       optimisation="2"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_gui_extra" path="../../juce"/>
+        <MODULEPATH id="juce_gui_basics" path="../../juce"/>
+        <MODULEPATH id="juce_graphics" path="../../juce"/>
+        <MODULEPATH id="juce_events" path="../../juce"/>
+        <MODULEPATH id="juce_data_structures" path="../../juce"/>
+        <MODULEPATH id="juce_core" path="../../juce"/>
+        <MODULEPATH id="juce_audio_utils" path="../../juce"/>
+        <MODULEPATH id="juce_audio_processors" path="../../juce"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../juce"/>
+        <MODULEPATH id="juce_audio_formats" path="../../juce"/>
+        <MODULEPATH id="juce_audio_devices" path="../../juce"/>
+        <MODULEPATH id="juce_audio_basics" path="../../juce"/>
+      </MODULEPATHS>
+    </LINUX_MAKE>
+    <XCODE_MAC targetFolder="Builds/MacOSX">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="0" name="Release"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_gui_extra" path="../../juce"/>
+        <MODULEPATH id="juce_gui_basics" path="../../juce"/>
+        <MODULEPATH id="juce_graphics" path="../../juce"/>
+        <MODULEPATH id="juce_events" path="../../juce"/>
+        <MODULEPATH id="juce_data_structures" path="../../juce"/>
+        <MODULEPATH id="juce_core" path="../../juce"/>
+        <MODULEPATH id="juce_audio_utils" path="../../juce"/>
+        <MODULEPATH id="juce_audio_processors" path="../../juce"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../juce"/>
+        <MODULEPATH id="juce_audio_formats" path="../../juce"/>
+        <MODULEPATH id="juce_audio_devices" path="../../juce"/>
+        <MODULEPATH id="juce_audio_basics" path="../../juce"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+  </MODULES>
+  <JUCEOPTIONS JUCE_WEB_BROWSER="0" JUCE_USE_FLAC="0" JUCE_USE_OGGVORBIS="0"
+               JUCE_USE_WINDOWS_MEDIA_FORMAT="0" JUCE_WASAPI="0" JUCE_DIRECTSOUND="0"/>
+  <LIVE_SETTINGS>
+    <WINDOWS/>
+    <LINUX/>
+  </LIVE_SETTINGS>
+</JUCERPROJECT>
