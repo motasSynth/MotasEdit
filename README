@@ -1,0 +1,25 @@
+Motas Electronics Limited 2023
+https://www.motas-synth.uk/
+
+MotasEdit is software for interacting with the Motas-6 synthesizer. 
+The software can be built as a standalone program or as a plugin for use with third-party DAW software.
+
+
+
+This version of MotasEdit was built with JUCE release v5.4.5. under licence GPLv3.
+JUCE v5.4.5 can be obtained from:
+https://github.com/juce-framework/JUCE/releases/tag/5.4.5
+
+
+
+MotasEdit is free software: you can redistribute it and/or modify it under the terms
+of the GNU General Public License as published by the Free Software Foundation,
+ either version 3 of the License, or (at your option) any later version.
+
+MotasEdit is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with MotasEdit.
+ If not, see <https://www.gnu.org/licenses/>.
+
