@@ -1,0 +1,373 @@
+
+/*
+Copyright
+2023
+J. M. Hayes
+Motas Electronics Limited
+
+This file is part of MotasEdit.
+
+MotasEdit is free software: you can redistribute it and/or modify it under the terms
+of the GNU General Public License as published by the Free Software Foundation,
+ either version 3 of the License, or (at your option) any later version.
+
+MotasEdit is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with MotasEdit.
+ If not, see <https://www.gnu.org/licenses/>.
+
+
+*/
+
+
+
+/*
+ * advancedMod.h
+ *
+ *
+ */
+
+#ifndef SOURCE_HEADERS_ADVANCEDMOD_H_
+#define SOURCE_HEADERS_ADVANCEDMOD_H_
+
+
+#pragma once
+
+#include "ApplicationCommon.h"
+#include "MIDIDeviceListBox.h"
+#include "ParameterData.h"
+#include "stdint.h"
+#include "utilities.h"
+#include "motasDefines.h"
+class HoldingWindowComponent;
+class PatchPatternSequence;
+class Firmware;
+class MotasEditPluginAudioProcessor;
+class PanelControl;
+class CustomSlider;
+
+
+#define NUMBER_OF_MODULATION_OF_MODULATIONS 16
+
+enum
+{
+	AMOD_NRPN_TYPE_SOURCE1,
+	AMOD_NRPN_TYPE_SOURCE2,
+	AMOD_NRPN_TYPE_DEST,
+	AMOD_NRPN_TYPE_ALGORITHM,
+	AMOD_NRPN_TYPE_GAIN,
+	AMOD_NRPN_TYPE_UNIPOLAR,
+	AMOD_NRPN_TYPE_MODE = 7,
+	AMOD_NRPN_TYPE_END
+
+};
+
+
+
+#define MAX_VIRTUAL_SOURCE_AND_DEST (NUMBER_OF_MODULATION_OF_MODULATIONS)
+
+enum
+{
+	MOD_ALGORITHM_ZERO,
+	MOD_ALGORITHM_SRC1,
+	MOD_ALGORITHM_SRC1_NEGATED,
+	MOD_ALGORITHM_SRC2,
+	MOD_ALGORITHM_SUM,
+	MOD_ALGORITHM_MEAN,
+	MOD_ALGORITHM_SUBTRACT,
+	MOD_ALGORITHM_DIFF,
+
+	MOD_ALGORITHM_MIN,
+	MOD_ALGORITHM_MAX,
+	MOD_ALGORITHM_MULT,
+	MOD_ALGORITHM_DIVIDE,
+	MOD_ALGORITHM_QUANTISE,
+	MOD_ALGORITHM_SLEW,
+	MOD_ALGORITHM_SAMPLE_HOLD,
+	MOD_ALGORITHM_TIME_DIVIDE,
+
+	MOD_ALGORITHM_LESS_THAN,
+	MOD_ALGORITHM_GREATER_THAN,
+
+
+	MOD_ALGORITHM_BOOLEAN_AND,
+	MOD_ALGORITHM_BOOLEAN_OR,
+	MOD_ALGORITHM_BOOLEAN_XOR,
+
+	//MOD_ALGORITHM_OFFSET,
+	//MOD_ALGORITHM_GATE_POSITIVE,
+	//MOD_ALGORITHM_GATE_NEGATIVE,
+	MOD_ALGORITHM_ENTRIES_MAX
+};
+
+enum
+{
+	SOURCE_RESCALE_NONE,
+	SOURCE_RESCALE_LFO_OUTPUT,
+	SOURCE_RESCALE_EG_OUTPUT,
+	SOURCE_RESCALE_EG_MODIFIED_SHAPE_OUTPUT,
+	SOURCE_RESCALE_AUDIO,
+	SOURCE_RESCALE_PARAMETER,
+	SOURCE_RESCALE_GLOBAL_MODULATOR, //  M1...M4
+	SOURCE_RESCALE_GLOBAL_VELOCITY,
+	SOURCE_RESCALE_GLOBAL_NOTE,
+	//SOURCE_RESCALE_KNOB_VALUE,
+	SOURCE_RESCALE_VIRTUAL,
+	SOURCE_RESCALE_CV,
+	SOURCE_RESCALE_NOTES_PRESSED,
+	SOURCE_RESCALE_PITCH,
+	SOURCE_RESCALE_FIXED_VALUE,
+	SOURCE_RESCALE_KNOB_POSITION,
+	SOURCE_RESCALE_TEMPO_CLOCK,
+
+};
+
+enum
+{
+	ADVANCED_MOD_SOURCE_PAGE_VIRTUAL,
+	//ADVANCED_MOD_SOURCE_PAGE_VIRTUAL_PRE_GAIN,
+	ADVANCED_MOD_SOURCE_PAGE_GLOBAL,
+	ADVANCED_MOD_SOURCE_PAGE_PAGE_OFFSET,
+	ADVANCED_MOD_SOURCE_PAGE_PAGE_KNOB,
+	ADVANCED_MOD_SOURCE_PAGE_PAGE_LFO,
+	ADVANCED_MOD_SOURCE_PAGE_PAGE_EG,
+	ADVANCED_MOD_SOURCE_PAGE_MISC,
+	ADVANCED_MOD_SOURCE_PAGE_END
+};
+
+
+
+enum
+{
+	ADVANCED_MOD_SOURCE_PARAM_VIRTUAL,
+	ADVANCED_MOD_SOURCE_PARAM_VIRTUAL_END = ADVANCED_MOD_SOURCE_PARAM_VIRTUAL + MAX_VIRTUAL_SOURCE_AND_DEST - 1,
+	ADVANCED_MOD_SOURCE_PARAM_VIRTUAL_LAST
+};
+
+enum
+{
+	ADVANCED_MOD_SOURCE_PARAM_GLOBAL_VELOCITY,
+	ADVANCED_MOD_SOURCE_PARAM_GLOBAL_PITCH,
+	ADVANCED_MOD_SOURCE_PARAM_GLOBAL_M1,
+	ADVANCED_MOD_SOURCE_PARAM_GLOBAL_M2,
+	ADVANCED_MOD_SOURCE_PARAM_GLOBAL_M3,
+	ADVANCED_MOD_SOURCE_PARAM_GLOBAL_M4,
+	ADVANCED_MOD_SOURCE_PARAM_GLOBAL_CV1,
+	ADVANCED_MOD_SOURCE_PARAM_GLOBAL_CV2,
+	ADVANCED_MOD_SOURCE_PARAM_GLOBAL_CV3,
+	ADVANCED_MOD_SOURCE_PARAM_GLOBAL_CV4,
+	ADVANCED_MOD_SOURCE_PARAM_GLOBAL_LFO_OUTPUT,
+	ADVANCED_MOD_SOURCE_PARAM_GLOBAL_LFO_OUTPUT_END = ADVANCED_MOD_SOURCE_PARAM_GLOBAL_LFO_OUTPUT  + NUM_GLOBAL_LFOS - 1,
+	ADVANCED_MOD_SOURCE_PARAM_GLOBAL_EG_OUTPUT,
+	ADVANCED_MOD_SOURCE_PARAM_GLOBAL_EG_OUTPUT_END = ADVANCED_MOD_SOURCE_PARAM_GLOBAL_EG_OUTPUT + NUM_GLOBAL_EGS - 1,
+	ADVANCED_MOD_SOURCE_PARAM_GLOBAL_END,
+};
+
+
+enum
+{
+	ADVANCED_MOD_SOURCE_PARAM_PAGE_FIRST,
+	ADVANCED_MOD_SOURCE_PARAM_PAGE_LAST = ADVANCED_MOD_SOURCE_PARAM_PAGE_FIRST + PARAM_END - 1,
+	ADVANCED_MOD_SOURCE_PARAM_PAGE_END,
+};
+
+
+enum
+{
+	ADVANCED_MOD_SOURCE_PARAM_MISC_TEMPO_CLOCK,
+
+	ADVANCED_MOD_SOURCE_PARAM_MISC_GLOBAL_NOTES_PRESSED,
+
+	ADVANCED_MOD_SOURCE_PARAM_MISC_PITCH_NOTE_OPTION_LATEST_NOTE, // latest note pitch is tracked, when keys released determine new latest
+	ADVANCED_MOD_SOURCE_PARAM_MISC_PITCH_NOTE_OPTION_FIRST_NOTE,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_PITCH_NOTE_OPTION_SECOND_NOTE,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_PITCH_NOTE_OPTION_THIRD_NOTE,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_PITCH_NOTE_OPTION_HIGHEST_NOTE, // highest note pitch is tracked, when keys released determine new highest
+	ADVANCED_MOD_SOURCE_PARAM_MISC_PITCH_NOTE_OPTION_MIDDLE_NOTE, // middle note pitch is tracked, when keys released determine new middle
+	ADVANCED_MOD_SOURCE_PARAM_MISC_PITCH_NOTE_OPTION_LOWEST_NOTE,
+
+
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_VALUE_1,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_VALUE_2,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_VALUE_3,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_VALUE_4,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_VALUE_5,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_VALUE_6,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_VALUE_7,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_VALUE_8,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_VALUE_9,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_VALUE_10,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_VALUE_11,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_VALUE_12,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_VALUE_13,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_VALUE_14,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_VALUE_15,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_VALUE_16,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_VALUE_32,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_VALUE_64,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_VALUE_128,
+/*	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_VALUE_256,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_VALUE_512,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_VALUE_1024,
+
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_NUMBER_2,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_NUMBER_3,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_NUMBER_4,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_NUMBER_5,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_NUMBER_6,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_NUMBER_7,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_NUMBER_8,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_NUMBER_9,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_NUMBER_10,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_NUMBER_11,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_NUMBER_12,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_NUMBER_13,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_NUMBER_14,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_NUMBER_15,
+	ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_NUMBER_16,*/
+
+
+	ADVANCED_MOD_SOURCE_PARAM_MISC_END
+};
+
+
+
+enum
+{
+
+/*	ADVANCED_MOD_DEST_PARAMETER,
+	ADVANCED_MOD_DEST_PARAMETER_END = ADVANCED_MOD_DEST_PARAMETER + PARAM_END - 1,
+	ADVANCED_MOD_DEST_GLOBAL_LFO_FREQ,
+	ADVANCED_MOD_DEST_GLOBAL_LFO_FREQ_END = ADVANCED_MOD_DEST_GLOBAL_LFO_FREQ + NUM_GLOBAL_LFOS - 1,
+	ADVANCED_MOD_DEST_LOCAL_LFO_FREQ,
+	ADVANCED_MOD_DEST_LOCAL_LFO_FREQ_END = ADVANCED_MOD_DEST_LOCAL_LFO_FREQ + PARAM_END - 1,
+	*/
+	ADVANCED_MOD_DEST_NRPN,
+	ADVANCED_MOD_DEST_NRPN_END = ADVANCED_MOD_DEST_NRPN + NUMBER_OF_CC_MAPPINGS - 1,
+/*	ADVANCED_MOD_DEST_VIRTUAL,
+	ADVANCED_MOD_DEST_VIRTUAL_END = ADVANCED_MOD_DEST_VIRTUAL + MAX_VIRTUAL_SOURCE_AND_DEST - 1,*/
+	ADVANCED_MOD_DEST_END
+};
+
+#define MAX_ADVANCED_MOD_NAME_LENGTH 13
+
+
+#define MAX_FIXED_SOURCE_VALUES (ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_VALUE_128 - ADVANCED_MOD_SOURCE_PARAM_MISC_FIXED_VALUE_1 + 1)
+
+
+
+#define MOD_DEST_LIMIT_MAX (4096 * 2)
+
+class AdvancedModSetup  : public Component,  public ComboBox::Listener,
+	public TextButton::Listener, public ChangeListener, private Slider::Listener
+
+{
+public:
+
+	AdvancedModSetup(HoldingWindowComponent* parent, LookAndFeel* laf);
+
+	~AdvancedModSetup();
+
+	Colour LineColour;
+	HoldingWindowComponent* holdingWindow;
+
+
+	void initPanelSettings();
+
+	void updateCCMapping(int ccIndex, int page , int dest);
+	void updateAdvancedModSettings(int index, const t_modOfMod* modSettings, bool aModMode );
+
+private:
+
+
+
+	float fieldHeight;
+	Rectangle<int>localBoundsRect;
+
+	float boundsHeight;
+
+	int widthMatrix;
+
+	bool aModEnabled;
+
+	void changeListenerCallback (ChangeBroadcaster* source) override;
+
+	void buttonClicked(Button* b) override;
+
+	Label advancedModLabel { "Advanced modulation", "Advanced modulation" };
+
+	Label slotLabel { "Slot", "Slot" };
+	Label source1Label { "Source 1", "Source 1" };
+	Label source1ParamLabel { "Source 1 param", " " };
+	Label source2Label { "Source 2", "Source 2" };
+	Label gainLabel { "Gain", "Gain" };
+	Label source2ParamLabel { "Source 2 param", " " };
+
+	Label algorithmLabel { "Function", "Function" };
+	Label destLabel { "Destination", "Destination" };
+	//Label destParamLabel { "Destination param", "Destination param" };
+	//Label bipolarLabel { "Bi/unipolar ", "Bi/unipolar" };
+
+
+
+	void comboBoxChanged (ComboBox *comboBoxThatHasChanged) override;
+
+	void sendNRPNChange(uint8_t index, uint8_t type,  uint8_t msb, uint8_t lsb);
+
+	//void updateComboMapping(int index,bool updatePatch, int page, int dest);
+
+
+	//void updateComboMappingDestination(int index,bool updatePatch, int page, int dest);
+
+	void updateComboMappingGeneric(int type, int index, bool updatePatch);
+
+
+
+	TextButton aModOnOffButton;
+
+	OwnedArray<Label> slotArray;
+
+
+	OwnedArray<ComboBox> mappingSource1Page;
+	OwnedArray<ComboBox> mappingSource1Param;
+	OwnedArray<ComboBox> mappingSource2Page;
+	OwnedArray<ComboBox> mappingSource2Param;
+
+	OwnedArray<ComboBox> mappingAlgorithm;
+
+	OwnedArray<ComboBox> mappingUnipolar;
+
+
+	OwnedArray<ComboBox> mappingDestPage;
+	OwnedArray<ComboBox> mappingDestParam;
+
+
+
+
+	OwnedArray<Slider> mappingGain;
+
+	 void sliderValueChanged (Slider* slider) override;
+
+	void addLabelAndSetStyle (Label& label);
+
+	void resized() override;
+#if BUILD_STANDALONE_EXECUTABLE == 1
+
+#else
+	ComboBox guiSizeCombo;
+#endif
+
+    void paint (Graphics&) override;
+
+	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AdvancedModSetup)
+
+};
+
+
+
+
+
+
+#endif /* SOURCE_HEADERS_ADVANCEDMOD_H_ */
