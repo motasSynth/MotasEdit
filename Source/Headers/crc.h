@@ -17,8 +17,7 @@
 
 
 /*
-Copyright
-2023
+Copyright 2022
 J. M. Hayes
 Motas Electronics Limited
 
